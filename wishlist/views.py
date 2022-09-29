@@ -15,7 +15,7 @@ def show_wishlist(request):
     data_barang_wishlist = BarangWishlist.objects.all()
     context = {
         'list_barang': data_barang_wishlist,
-        'nama': 'Kak Cinoy',
+        'username': request.COOKIES['username'],
         'last_login': request.COOKIES['last_login'],
     }
     return render(request, "wishlist.html", context)
@@ -59,6 +59,7 @@ def login_user(request):
         if user is not None:
             login(request, user) 
             response = HttpResponseRedirect(reverse("wishlist:show_wishlist")) 
+            response.set_cookie('username', username)
             response.set_cookie('last_login', str(datetime.datetime.now())) 
             return response
         else:
