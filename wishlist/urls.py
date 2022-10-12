@@ -1,5 +1,7 @@
 from django.urls import path
 from wishlist.views import show_wishlist
+from wishlist.views import show_wishlist_ajax
+from wishlist.views import wishlist_form
 from wishlist.views import show_wishlist_xml
 from wishlist.views import show_wishlist_json
 from wishlist.views import show_wishlist_json_id
@@ -10,6 +12,8 @@ app_name = 'wishlist'
 
 urlpatterns = [
     path('', show_wishlist, name='show_wishlist'),
+    path('ajax/', show_wishlist_ajax, name='show_wishlist_ajax'),
+    path('ajax/submit/', wishlist_form, name='wishlist_form'),
     path('xml/', show_wishlist_xml, name='show_wishlist_xml'),
     path('json/', show_wishlist_json, name='show_wishlist_json'),
     path('json/<int:id>', show_wishlist_json_id, name='show_wishlist_json_id'),

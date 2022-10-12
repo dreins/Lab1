@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h5></h5>
+
+<table>
+    <tr>
+    <th>Nama Barang</th>
+    <th>Harga Barang</th>
+    <th>Deskripsi</th>
+    </tr>
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+    {% for barang in list_barang %}
+        <tr class="content-table">
+            <th>{{barang.nama_barang}}</th>
+            <th>{{barang.harga_barang}}</th>
+            <th>{{barang.deskripsi}}</th>
+        </tr>
+    {% endfor %}
+</table> 
+<center>
+    <h5>Sesi terakhir login: {{ last_login }}</h5>
+</center>
+
+{% endblock content %}
